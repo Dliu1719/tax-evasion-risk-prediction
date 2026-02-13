@@ -42,7 +42,7 @@ To compare model performance consistently, Table 2 presents the confusion matric
 
 **Model Comparisons**
 
-1.  Logistic Regression vs. KNN
+Logistic Regression vs. KNN
 
 Both logistic regression models substantially outperform the KNN models in overall accuracy and error rates. Logistic regression achieves approximately 99% accuracy, while KNN ranges between 95% and 96%.
 
@@ -54,13 +54,6 @@ The ROC curve for logistic regression yields an AUC of approximately 0.999, indi
   <img src="media/image2.png" width="500">
 </p>
 
-2.  Threshold Choice in Logistic Regression
-
-Model performance is not highly sensitive to the classification threshold. Adjusting the threshold mainly shifts the trade-off between false positives and false negatives, while overall accuracy remains very stable. This suggests the logistic model is robust to this hyperparameter choice.
-
-3.  Scaled vs. Unscaled KNN
-
-Scaling improves KNN performance. The scaled model reduces missed evaders from 15 to 9 and increases overall accuracy. This reflects the importance of standardizing predictors in distance-based methods, since unscaled variables with larger numerical ranges can distort neighborhood calculations.
 
 **Conclusion**
 
