@@ -34,7 +34,7 @@ To compare model performance consistently, Table 2 presents the confusion matric
 
 | Model          | TN  | FP  | FN  | TP  | Accuracy |
 | -------------- | --- | --- | --- | --- | -------- |
-| Logistic (0.5) | 232 | 3   | 3   | 150 | 98.97%   |
+| Logistic (0.5) | 232 | 2   | 2   | 151 | 98.97%   |
 | Logistic (0.6) | 235 | 0   | 3   | 150 | 99.23%   |
 | KNN (Unscaled) | 231 | 4   | 15  | 138 | 95.10%   |
 | KNN (Scaled)   | 230 | 5   | 9   | 144 | 96.39%   |
