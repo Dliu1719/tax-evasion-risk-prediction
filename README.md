@@ -12,7 +12,7 @@ The dataset includes firms selected into the audit process based on government s
 
 The dataset has been slightly modified for instructional purposes, with simplified definitions for some variables. Table 1 provides the full list of variables and their definitions.
 
-> ![](media/media/image1.png){width="4.641732283464567in" height="2.3172900262467193in"}
+> ![](media/image1.png)
 
 ### 3. Methodology
 
@@ -28,17 +28,12 @@ To compare model performance consistently, Table 2 presents the confusion matric
 
 **Confusion Matrix Comparison**
 
-  -------------------------------------------------------------------------------
-  **Model**        **TN**      **FP**      **FN**      **TP**      **Accuracy**
-  ---------------- ----------- ----------- ----------- ----------- --------------
-  Logistic (0.5)   232         3           3           150         98.97%
+| Model          | TN  | FP  | FN  | TP  | Accuracy |
+| -------------- | --- | --- | --- | --- | -------- |
+| Logistic (0.5) | 232 | 3   | 3   | 150 | 98.97%   |
+| Logistic (0.6) | 235 | 0   | 3   | 150 | 99.23%   |
+| KNN (Unscaled) | 231 | 4   | 15  | 138 | 95.10%   |
 
-  Logistic (0.6)   235         0           3           150         99.23%
-
-  KNN (Unscaled)   231         4           15          138         95.10%
-
-  KNN (Scaled)     230         5           9           144         96.39%
-  -------------------------------------------------------------------------------
 
 **Model Comparisons**
 
@@ -50,8 +45,8 @@ More importantly, logistic regression produces far fewer false negatives. In con
 
 The ROC curve for logistic regression yields an AUC of approximately 0.999, indicating near-perfect discrimination within the audited sample.
 
-> ![](media/media/image2.png){width="4.0671052055993in" height="3.7388834208223973in"}
-
+> ![](media/image2.png)
+> 
 2.  Threshold Choice in Logistic Regression
 
 Model performance is not highly sensitive to the classification threshold. Adjusting the threshold mainly shifts the trade-off between false positives and false negatives, while overall accuracy remains very stable. This suggests the logistic model is robust to this hyperparameter choice.
@@ -65,3 +60,6 @@ Scaling improves KNN performance. The scaled model reduces missed evaders from 1
 Among the models tested, logistic regression outperforms KNN, achieving higher accuracy and fewer missed evaders. Its performance is also stable across thresholds, indicating robustness. The strong results likely reflect a structured relationship between observable risk indicators and audit outcomes in this selected sample, where logistic regression performs well.
 
 While logistic regression is the best performer here, future work could explore more flexible models such as tree-based methods. A key limitation is the restricted dataset: it includes only pre-selected audited firms, which may limit generalizability and make prediction easier than in the full firm population.
+
+[image-1]:	media/image1.png
+[image-2]:	media/image2.png
