@@ -2,7 +2,7 @@
 
 ### 1.Project Idea
 
-Governments can increase tax revenue by improving audit targeting, that is, focusing audits on firms more likely to evade taxes while reducing audits of likely compliant firms. This improves detection without expanding audit resources. This project examines how machine learning--based risk prediction can help identify high-risk firms before audits occur.
+Governments can increase tax revenue by improving audit targeting, that is, focusing audits on firms more likely to evade taxes while reducing audits of likely compliant firms. This improves detection without expanding audit resources. This project examines how machine learning based risk prediction can help identify high-risk firms before audits occur.
 
 ### 2. Data
 
