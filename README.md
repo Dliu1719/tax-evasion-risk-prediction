@@ -12,7 +12,9 @@ The dataset includes firms selected into the audit process based on government s
 
 The dataset has been slightly modified for instructional purposes, with simplified definitions for some variables. Table 1 provides the full list of variables and their definitions.
 
-> ![](media/image1.png)
+<p align="center">
+  <img src="media/image1.png" width="650">
+</p>
 
 ### 3. Methodology
 
@@ -45,8 +47,10 @@ More importantly, logistic regression produces far fewer false negatives. In con
 
 The ROC curve for logistic regression yields an AUC of approximately 0.999, indicating near-perfect discrimination within the audited sample.
 
-> ![](media/image2.png)
-> 
+<p align="center">
+  <img src="media/image2.png" width="650">
+</p>
+
 2.  Threshold Choice in Logistic Regression
 
 Model performance is not highly sensitive to the classification threshold. Adjusting the threshold mainly shifts the trade-off between false positives and false negatives, while overall accuracy remains very stable. This suggests the logistic model is robust to this hyperparameter choice.
@@ -60,6 +64,3 @@ Scaling improves KNN performance. The scaled model reduces missed evaders from 1
 Among the models tested, logistic regression outperforms KNN, achieving higher accuracy and fewer missed evaders. Its performance is also stable across thresholds, indicating robustness. The strong results likely reflect a structured relationship between observable risk indicators and audit outcomes in this selected sample, where logistic regression performs well.
 
 While logistic regression is the best performer here, future work could explore more flexible models such as tree-based methods. A key limitation is the restricted dataset: it includes only pre-selected audited firms, which may limit generalizability and make prediction easier than in the full firm population.
-
-[image-1]:	media/image1.png
-[image-2]:	media/image2.png
