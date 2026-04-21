@@ -1,75 +1,59 @@
-## Machine Learning Case Study - Tax Evasion Prediction
+# Machine Learning for Tax Evasion Risk Prediction
+## A Classification Case Study Using Firm-Level Audit Data
 
-### 1.Project Idea
+### 1. Research Question
 
-Governments can increase tax revenue by improving audit targeting, that is, focusing audits on firms more likely to evade taxes while reducing audits of likely compliant firms. This improves detection without expanding audit resources. This project examines how machine learning based risk prediction can help identify high-risk firms before audits occur.
+Can machine learning improve the targeting of tax audits? This project builds and evaluates classification models to predict whether an audited firm will be found to have evaded taxes, using firm-level characteristics and financial risk indicators as predictors. The goal is to identify high-risk firms before audits occur, improving detection without expanding audit resources.
 
 ### 2. Data
 
-The project uses firm-level audit data from India, covering firms suspected of tax evasion and subsequently audited by the Comptroller and Auditor General (CAG) of India.
+The analysis uses firm-level audit data from India, covering firms selected for audit by the Comptroller and Auditor General (CAG) of India. The outcome variable indicates whether the audit detected tax evasion (`Risk`). Predictors include quantitative measures capturing firm characteristics, financial activity, and risk-related indicators.
 
-The dataset consists of firms selected for audit based on government suspicion rather than a random sample of the full firm population. The outcome variable indicates whether the audit detected tax evasion (`Risk`). Predictors include multiple quantitative measures capturing firm characteristics, financial activity, and risk-related indicators.
+The dataset has been modified for instructional use and is not included in this repository. Key variables are described in the notebook.
 
-The dataset has been modified for instructional use. Certain variable definitions have been simplified while preserving the underlying structure of the audit context. Table 1 below presents the full list of variables and their definitions.
-
-<p align="center">
-  <img src="media/image1.png" width="500">
-</p>
-
+**Important note on sample selection:** The dataset covers only pre-selected audited firms, not the full firm population. This means the sample is not representative of all firms, which likely makes prediction easier than it would be in a real-world deployment. Results should be interpreted accordingly.
 
 ### 3. Methodology
 
-This project applies supervised machine learning methods to estimate the probability that an audited firm will be found to have evaded taxes.
+Tax evasion detection is framed as a binary classification problem. Two model classes are implemented and compared:
 
-Tax evasion detection is framed as a binary classification problem, using firm-level characteristics and risk indicators as predictors. Two model classes are implemented. Logistic regression serves as an interpretable baseline model. K-Nearest Neighbors (KNN) provides a flexible, non-parametric alternative capable of capturing nonlinear patterns without imposing a specific functional form.
+- **Logistic Regression** — interpretable baseline model with two classification thresholds (0.5 and 0.6)
+- **K-Nearest Neighbors (KNN)** — flexible, non-parametric alternative; evaluated with and without feature scaling
 
-Model performance is evaluated using out-of-sample test data and cross-validation. Models are compared to assess predictive accuracy and robustness across alternative specifications, validation strategies, and classification thresholds. Particular attention is given to the trade-off between false negatives (missed evaders) and false positives (unnecessary audits), reflecting enforcement priorities.
+Model performance is evaluated using out-of-sample test data and cross-validation. Particular attention is given to the trade-off between false negatives (missed evaders) and false positives (unnecessary audits), reflecting real-world enforcement priorities.
 
+### 4. Key Results
 
-### 4. Results
+| Model | TN | FP | FN | TP | Accuracy |
+|---|---|---|---|---|---|
+| Logistic (threshold 0.5) | 233 | 2 | 2 | 151 | 98.97% |
+| Logistic (threshold 0.6) | 235 | 0 | 3 | 150 | 99.23% |
+| KNN (unscaled) | 231 | 4 | 15 | 138 | 95.10% |
+| KNN (scaled) | 230 | 5 | 9 | 144 | 96.39% |
 
-To compare model performance consistently, Table 2 presents the confusion matrices and overall accuracy for all four models.
+Logistic regression substantially outperforms KNN on both overall accuracy and false negatives. The ROC AUC for logistic regression is approximately 0.999. The strong results likely reflect the structured nature of the selected audit sample rather than generalizability to the full firm population.
 
-**Confusion Matrix Comparison**
+### 5. Repository Structure
 
-| Model          | TN  | FP  | FN  | TP  | Accuracy |
-| -------------- | --- | --- | --- | --- | -------- |
-| Logistic (0.5) | 233 | 2   | 2   | 151 | 98.97%   |
-| Logistic (0.6) | 235 | 0   | 3   | 150 | 99.23%   |
-| KNN (Unscaled) | 231 | 4   | 15  | 138 | 95.10%   |
-| KNN (Scaled)   | 230 | 5   | 9   | 144 | 96.39%   |
+```
+tax-evasion-risk-prediction/
+  Appendix_B_Code/
+    tax_evasion_prediction.ipynb   — full analysis notebook
+  Appendix_C_Result_Details/
+    Appendix_C_Result_Details.pdf  — extended results and robustness checks
+  media/
+    image1.png                     — variable definitions table
+    image2.png                     — ROC curve
+  README.md
+```
 
+### 6. How to Reproduce
 
-**Model Comparisons**
+1. Obtain the dataset and place it in `Appendix_A_Data/Data-Audit.csv`
+2. Open `Appendix_B_Code/tax_evasion_prediction.ipynb` in Jupyter
+3. Install required packages: `pandas`, `numpy`, `scikit-learn`, `matplotlib`
+4. Run all cells
 
-Logistic Regression vs. KNN
+---
 
-Both logistic regression models substantially outperform the KNN models in overall accuracy and error rates. Logistic regression achieves approximately 99% accuracy, while KNN ranges between 95% and 96%.
-
-More importantly, logistic regression produces far fewer false negatives. In contrast, the unscaled KNN misses 15 evaders and the scaled KNN misses 9. Given that missed evaders directly reduce tax revenue, this difference is policy-relevant.
-
-The ROC curve for logistic regression yields an AUC of approximately 0.999, indicating near-perfect discrimination within the audited sample.
-
-<p align="center">
-  <img src="media/image2.png" width="500">
-</p>
-
-
-**Conclusion**
-
-Among the models tested, logistic regression outperforms KNN, achieving higher accuracy and fewer missed evaders. Its performance is also stable across thresholds, indicating robustness. The strong results likely reflect a structured relationship between observable risk indicators and audit outcomes in this selected sample, where logistic regression performs well.
-
-While logistic regression is the best performer here, future work could explore more flexible models such as tree-based methods. A key limitation is the restricted dataset: it includes only pre-selected audited firms, which may limit generalizability and make prediction easier than in the full firm population.
-
-## Appendices
-
-This repository is organized into structured appendices for clarity and reproducibility:
-
-- **Appendix A – Data**  
-	  Contains the processed dataset used in this analysis.
-
-- **Appendix B – Code**  
-	  Contains the full Jupyter notebook implementing preprocessing, modeling, and evaluation.
-
-- **Appendix C – Result Details**  
-	  Contains extended performance tables, ROC analysis, threshold sensitivity, limitations, and future work.
+*Analysis by Dong Liu. Data source: firm-level audit data from India (Comptroller and Auditor General), modified for instructional use.*
