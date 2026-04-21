@@ -47,14 +47,6 @@ tax-evasion-risk-prediction/
   README.md
 ```
 
-### 6. How to Reproduce
-
-1. Obtain the dataset and place it in `data/Data-Audit.csv`
-2. Update the data path in the notebook accordingly
-3. Open `code/tax_evasion_prediction.ipynb` in Jupyter
-4. Install required packages: `pandas`, `numpy`, `scikit-learn`, `matplotlib`
-5. Run all cells
-
 ---
 
 *Analysis by Dong Liu. Data source: firm-level audit data from India (Comptroller and Auditor General), modified for instructional use.*
