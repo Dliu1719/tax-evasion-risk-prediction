@@ -37,10 +37,10 @@ Logistic regression substantially outperforms KNN on both overall accuracy and f
 
 ```
 tax-evasion-risk-prediction/
-  Appendix_B_Code/
+  code/
     tax_evasion_prediction.ipynb   — full analysis notebook
-  Appendix_C_Result_Details/
-    Appendix_C_Result_Details.pdf  — extended results and robustness checks
+  results/
+    result_details.pdf             — extended results and robustness checks
   media/
     image1.png                     — variable definitions table
     image2.png                     — ROC curve
@@ -49,10 +49,11 @@ tax-evasion-risk-prediction/
 
 ### 6. How to Reproduce
 
-1. Obtain the dataset and place it in `Appendix_A_Data/Data-Audit.csv`
-2. Open `Appendix_B_Code/tax_evasion_prediction.ipynb` in Jupyter
-3. Install required packages: `pandas`, `numpy`, `scikit-learn`, `matplotlib`
-4. Run all cells
+1. Obtain the dataset and place it in `data/Data-Audit.csv`
+2. Update the data path in the notebook accordingly
+3. Open `code/tax_evasion_prediction.ipynb` in Jupyter
+4. Install required packages: `pandas`, `numpy`, `scikit-learn`, `matplotlib`
+5. Run all cells
 
 ---
 
